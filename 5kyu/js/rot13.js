@@ -3,10 +3,7 @@
 
 // Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
 
-function rot13(message){
-    return message.split('').map(char => {
-      if (char >= 'A' && char <= 'Z') return String.fromCharCode(((char.charCodeAt(0) - 65 + 13) % 26) + 65);
-      else if (char >= 'a' && char <= 'z') return String.fromCharCode(((char.charCodeAt(0) - 97 + 13) % 26) + 97);
-      return char;
-    }).join('');
+function rot13(str) {
+  return str.replace(/[A-Za-z]/g, (char) => String.fromCharCode(
+  char <= 'Z' ? ((char.charCodeAt(0) - 65 + 13) % 26) + 65 : ((char.charCodeAt(0) - 97 + 13) % 26) + 97));
 }
